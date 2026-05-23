@@ -104,6 +104,10 @@ struct OnboardingView: View {
         cameraStatus = camStatus
         cameraGranted = newCameraGranted
         accessibilityGranted = newAccessibilityGranted
+
+        if cameraGranted && accessibilityGranted {
+            onDismiss()
+        }
     }
 
     private func openSystemPrefs(pane: String) {
