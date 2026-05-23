@@ -94,9 +94,16 @@ struct OnboardingView: View {
 
     private func refreshPermissions() {
         let camStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        let newCameraGranted = (camStatus == .authorized)
+        let newAccessibilityGranted = AXIsProcessTrusted()
+
+        if (newCameraGranted && !cameraGranted) || (newAccessibilityGranted && !accessibilityGranted) {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+        }
+
         cameraStatus = camStatus
-        cameraGranted = (camStatus == .authorized)
-        accessibilityGranted = AXIsProcessTrusted()
+        cameraGranted = newCameraGranted
+        accessibilityGranted = newAccessibilityGranted
     }
 
     private func openSystemPrefs(pane: String) {
