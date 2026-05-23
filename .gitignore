@@ -1,0 +1,24 @@
+# Xcode
+*.xcuserdata
+*.xcworkspace/xcuserdata
+PalmPilot.xcodeproj/xcuserdata
+PalmPilot.xcodeproj/project.xcworkspace/xcuserdata
+build/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+IDEWorkspaceChecks.plist
+
+# Swift Package Manager
+.build/
+Packages/
+*.xcodeproj
+!PalmPilot.xcodeproj
+
+# macOS
+.DS_Store
+*.app
+
+# IDE
+.vscode/
+.idea/

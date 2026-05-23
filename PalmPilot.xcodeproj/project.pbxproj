@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		005BA17736DE84193A35E492 /* PalmPilotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC10BDDD5493EAF4456B568 /* PalmPilotApp.swift */; };
+		3DC437391FF47D2581649C63 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6D427117E2CAB1A30825B /* AppViewModel.swift */; };
+		48BFF24C93E60EA145DCCF26 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DE42FD3A3F9A63B0F1255F /* Gesture.swift */; };
+		699BC7CD1ADFE8241810C3D1 /* ActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FCF2AEE769F51481011F1B /* ActionDispatcher.swift */; };
+		78CCB7AD76E8239CB1EEDCB3 /* ActionMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FC9846B20AA7984AF06690 /* ActionMapping.swift */; };
+		883BA1A1B5BE61D3E50CD2BE /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDFD2B2EE69D865A8A4DCD1 /* CameraManager.swift */; };
+		A30E5BEF7F779247F8A65603 /* HandPoseFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED68E17713296281DE89C16C /* HandPoseFrame.swift */; };
+		A899922DF3133180954B2E6F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D9064BCA30451BFCF5C1E1 /* SettingsView.swift */; };
+		B0CC8A530649A1B45829F7F8 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726DED9B947135FA33917AFC /* MenuBarView.swift */; };
+		B8D82EBDB817151A716C3717 /* GestureClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172262FBDC70F3C55D71DD1A /* GestureClassifier.swift */; };
+		C5B29E59B6E5AF405BF9B2E4 /* HandJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A8F051B53FB5E4FF7BEF9 /* HandJoint.swift */; };
+		CF0A12CF5EFA918454A0BD31 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C8C4E968441E7545262BD /* CameraPreviewView.swift */; };
+		E33C81F720619A1DCE3C2D25 /* GestureEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140346FB8DE6084F149D70D4 /* GestureEvent.swift */; };
+		E3745FF442D59C92ED75692F /* HandPoseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8EA606192FBD1B0C0B853D /* HandPoseDetector.swift */; };
+		ED3DA5136B6EBD072B12DA14 /* MotionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F225936B538425E8B99578 /* MotionTracker.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		140346FB8DE6084F149D70D4 /* GestureEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureEvent.swift; sourceTree = "<group>"; };
+		172262FBDC70F3C55D71DD1A /* GestureClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureClassifier.swift; sourceTree = "<group>"; };
+		617C8C4E968441E7545262BD /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		69F225936B538425E8B99578 /* MotionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTracker.swift; sourceTree = "<group>"; };
+		726DED9B947135FA33917AFC /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		79FCF2AEE769F51481011F1B /* ActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDispatcher.swift; sourceTree = "<group>"; };
+		7FC10BDDD5493EAF4456B568 /* PalmPilotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmPilotApp.swift; sourceTree = "<group>"; };
+		830A8F051B53FB5E4FF7BEF9 /* HandJoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandJoint.swift; sourceTree = "<group>"; };
+		A1FC9846B20AA7984AF06690 /* ActionMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMapping.swift; sourceTree = "<group>"; };
+		A20AC4B5CAA207E59BAA030F /* PalmPilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalmPilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7DE42FD3A3F9A63B0F1255F /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		BA8EA606192FBD1B0C0B853D /* HandPoseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseDetector.swift; sourceTree = "<group>"; };
+		CED6D427117E2CAB1A30825B /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		D9D9064BCA30451BFCF5C1E1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ED68E17713296281DE89C16C /* HandPoseFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandPoseFrame.swift; sourceTree = "<group>"; };
+		EEDFD2B2EE69D865A8A4DCD1 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1D15C6758BABB0AA372C845C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1FC9846B20AA7984AF06690 /* ActionMapping.swift */,
+				B7DE42FD3A3F9A63B0F1255F /* Gesture.swift */,
+				140346FB8DE6084F149D70D4 /* GestureEvent.swift */,
+				830A8F051B53FB5E4FF7BEF9 /* HandJoint.swift */,
+				ED68E17713296281DE89C16C /* HandPoseFrame.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		41F7E0871485E6DB295E04FC = {
+			isa = PBXGroup;
+			children = (
+				DC61FDB94CA453651A6BF616 /* Sources */,
+				B6F65DC0038998A327D421A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43A35514BC315C64E4DB9B74 /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				BA8EA606192FBD1B0C0B853D /* HandPoseDetector.swift */,
+			);
+			path = Vision;
+			sourceTree = "<group>";
+		};
+		69BD4947611B176B8E626508 /* Gesture */ = {
+			isa = PBXGroup;
+			children = (
+				172262FBDC70F3C55D71DD1A /* GestureClassifier.swift */,
+			);
+			path = Gesture;
+			sourceTree = "<group>";
+		};
+		76E96F9A451CF84890AD19AA /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				69F225936B538425E8B99578 /* MotionTracker.swift */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
+		9A61A66734874145708930EA /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				EEDFD2B2EE69D865A8A4DCD1 /* CameraManager.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		AF46F316FFCCC9EFFAFBB1E3 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				79FCF2AEE769F51481011F1B /* ActionDispatcher.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		B6F65DC0038998A327D421A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A20AC4B5CAA207E59BAA030F /* PalmPilot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF31C401DA9729D9B455D35B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CED6D427117E2CAB1A30825B /* AppViewModel.swift */,
+				7FC10BDDD5493EAF4456B568 /* PalmPilotApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		DC61FDB94CA453651A6BF616 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AF46F316FFCCC9EFFAFBB1E3 /* Actions */,
+				BF31C401DA9729D9B455D35B /* App */,
+				9A61A66734874145708930EA /* Camera */,
+				69BD4947611B176B8E626508 /* Gesture */,
+				1D15C6758BABB0AA372C845C /* Models */,
+				76E96F9A451CF84890AD19AA /* Motion */,
+				E93F73D892A56CAD0E9B3C64 /* UI */,
+				43A35514BC315C64E4DB9B74 /* Vision */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E93F73D892A56CAD0E9B3C64 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				617C8C4E968441E7545262BD /* CameraPreviewView.swift */,
+				726DED9B947135FA33917AFC /* MenuBarView.swift */,
+				D9D9064BCA30451BFCF5C1E1 /* SettingsView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		832C34F6A6FB38CD7437F13B /* PalmPilot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C08C2694855ABEA87681A2D9 /* Build configuration list for PBXNativeTarget "PalmPilot" */;
+			buildPhases = (
+				0129FB1A9EE82EBFD05C9478 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PalmPilot;
+			packageProductDependencies = (
+			);
+			productName = PalmPilot;
+			productReference = A20AC4B5CAA207E59BAA030F /* PalmPilot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C80D44FAD22D61262AE1C57A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					832C34F6A6FB38CD7437F13B = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6FBEBCA17D9D9DBC04D10149 /* Build configuration list for PBXProject "PalmPilot" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 41F7E0871485E6DB295E04FC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				832C34F6A6FB38CD7437F13B /* PalmPilot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0129FB1A9EE82EBFD05C9478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				699BC7CD1ADFE8241810C3D1 /* ActionDispatcher.swift in Sources */,
+				78CCB7AD76E8239CB1EEDCB3 /* ActionMapping.swift in Sources */,
+				3DC437391FF47D2581649C63 /* AppViewModel.swift in Sources */,
+				883BA1A1B5BE61D3E50CD2BE /* CameraManager.swift in Sources */,
+				CF0A12CF5EFA918454A0BD31 /* CameraPreviewView.swift in Sources */,
+				48BFF24C93E60EA145DCCF26 /* Gesture.swift in Sources */,
+				B8D82EBDB817151A716C3717 /* GestureClassifier.swift in Sources */,
+				E33C81F720619A1DCE3C2D25 /* GestureEvent.swift in Sources */,
+				C5B29E59B6E5AF405BF9B2E4 /* HandJoint.swift in Sources */,
+				E3745FF442D59C92ED75692F /* HandPoseDetector.swift in Sources */,
+				A30E5BEF7F779247F8A65603 /* HandPoseFrame.swift in Sources */,
+				B0CC8A530649A1B45829F7F8 /* MenuBarView.swift in Sources */,
+				ED3DA5136B6EBD072B12DA14 /* MotionTracker.swift in Sources */,
+				005BA17736DE84193A35E492 /* PalmPilotApp.swift in Sources */,
+				A899922DF3133180954B2E6F /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0617A1113181BBBAA683D82A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.palmpilot.app;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6C32F044C43F2FE1A3E2F5ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.palmpilot.app;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AA5D5C05904DA12DEDEBFD22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		B118399673DBDAB72D90D891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FBEBCA17D9D9DBC04D10149 /* Build configuration list for PBXProject "PalmPilot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B118399673DBDAB72D90D891 /* Debug */,
+				AA5D5C05904DA12DEDEBFD22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C08C2694855ABEA87681A2D9 /* Build configuration list for PBXNativeTarget "PalmPilot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0617A1113181BBBAA683D82A /* Debug */,
+				6C32F044C43F2FE1A3E2F5ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C80D44FAD22D61262AE1C57A /* Project object */;
+}
