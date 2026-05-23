@@ -21,7 +21,6 @@ final class AppViewModel: ObservableObject {
     private let processingQueue = DispatchQueue(label: "com.palmpilot.processing", qos: .userInitiated)
     private let mappingStoreKey = "com.palmpilot.actionMappings"
     private var previousGesture: Gesture = .unknown
-    private var handPresent = false
     private var onboardingWindow: NSWindow?
 
     init() {
@@ -74,48 +73,27 @@ final class AppViewModel: ObservableObject {
     private func processPipeline(frame: HandPoseFrame?) {
         let staticGesture = gestureClassifier.classify(frame)
         let finalGesture = motionTracker.process(frame: frame, staticGesture: staticGesture)
-
-        let isHandNow = (frame != nil && frame!.landmarks.count >= 15)
-        if isHandNow != handPresent {
-            handPresent = isHandNow
-            if isHandNow {
-                Log.info("Hand entered frame")
-            } else {
-                Log.info("Hand left frame — gesture reset to unknown")
-            }
-        }
-
         let frameLandmarks = frame?.landmarks ?? [:]
 
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             self.landmarks = frameLandmarks
-            if finalGesture != .unknown || self.currentGesture == nil {
-                self.currentGesture = finalGesture
-            }
-        }
-
-        if finalGesture != .unknown && finalGesture != previousGesture {
-            Log.info("Pipeline result: \(finalGesture.rawValue)")
-            previousGesture = finalGesture
-
-            let mappings = currentMappingsSnapshot()
-            actionDispatcher.dispatch(finalGesture, mappings: mappings)
-        } else if finalGesture == .unknown && previousGesture != .unknown {
-            previousGesture = .unknown
+            self.updateGestureState(finalGesture)
         }
     }
 
-    private func currentMappingsSnapshot() -> [ActionMapping] {
-        var mappings: [ActionMapping] = []
-        let semaphore = DispatchSemaphore(value: 0)
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            mappings = self.actionMappings
-            semaphore.signal()
+    private func updateGestureState(_ gesture: Gesture) {
+        if gesture != .unknown || currentGesture == nil {
+            currentGesture = gesture
         }
-        semaphore.wait()
-        return mappings
+
+        if gesture != .unknown && gesture != previousGesture {
+            Log.info("Gesture: \(previousGesture.rawValue) → \(gesture.rawValue)")
+            previousGesture = gesture
+            actionDispatcher.dispatch(gesture, mappings: actionMappings)
+        } else if gesture == .unknown && previousGesture != .unknown {
+            previousGesture = .unknown
+        }
     }
 
     // MARK: - Controls
@@ -155,7 +133,6 @@ final class AppViewModel: ObservableObject {
         currentGesture = nil
         landmarks = [:]
         previousGesture = .unknown
-        handPresent = false
         Log.info("Tracking session stopped")
     }
 

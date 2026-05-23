@@ -15,11 +15,7 @@ final class MotionTracker {
     private var lastSwipeTime: TimeInterval = 0
     private let swipeCooldown: TimeInterval = 0.5
 
-    private var lastGesture: Gesture = .unknown
-
     func process(frame: HandPoseFrame?, staticGesture: Gesture) -> Gesture {
-        defer { lastGesture = staticGesture }
-
         guard let frame = frame,
               let centroid = frame.centroid,
               frame.confidence >= 0.5 else {

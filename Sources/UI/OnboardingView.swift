@@ -38,7 +38,7 @@ struct OnboardingView: View {
                         if cameraStatus == .notDetermined {
                             Task { await AVCaptureDevice.requestAccess(for: .video) }
                         } else {
-                            openSystemPrefs(pane: "Privacy_Camera")
+                            SystemPreferences.open(pane: "Privacy_Camera")
                         }
                     }
                 )
@@ -49,7 +49,7 @@ struct OnboardingView: View {
                     description: "Needed to send keyboard shortcuts and system actions when you make gestures.",
                     granted: accessibilityGranted,
                     action: {
-                        openSystemPrefs(pane: "Privacy_Accessibility")
+                        SystemPreferences.open(pane: "Privacy_Accessibility")
                     }
                 )
             }
@@ -107,13 +107,6 @@ struct OnboardingView: View {
 
         if cameraGranted && accessibilityGranted {
             onDismiss()
-        }
-    }
-
-    private func openSystemPrefs(pane: String) {
-        let urlString = "x-apple.systempreferences:com.apple.preference.security?\(pane)"
-        if let url = URL(string: urlString) {
-            NSWorkspace.shared.open(url)
         }
     }
 }

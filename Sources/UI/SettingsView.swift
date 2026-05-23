@@ -88,7 +88,7 @@ struct SettingsView: View {
 
             ForEach($viewModel.actionMappings) { $mapping in
                 HStack {
-                    Image(systemName: Gesture(rawValue: mapping.gesture)?.symbolName ?? "questionmark")
+                    Image(systemName: mapping.gesture.symbolName)
                         .frame(width: 24)
                     Text(mapping.gesture.displayName)
                         .frame(width: 100, alignment: .leading)
@@ -110,7 +110,7 @@ struct SettingsView: View {
                 .foregroundColor(.secondary)
 
             Button("Open Accessibility Settings") {
-                openAccessibilitySettings()
+                SystemPreferences.open(pane: "Privacy_Accessibility")
             }
             .font(.caption)
             .buttonStyle(.link)
@@ -155,26 +155,6 @@ struct SettingsView: View {
                 .frame(width: 20)
             Text(text)
                 .font(.caption)
-        }
-    }
-
-    private func openAccessibilitySettings() {
-        if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
-            NSWorkspace.shared.open(url)
-        }
-    }
-}
-
-private extension String {
-    var displayName: String {
-        switch self {
-        case "openPalm": return "Open Palm"
-        case "fist": return "Fist"
-        case "thumbsUp": return "Thumbs Up"
-        case "peaceSign": return "Peace Sign"
-        case "swipeLeft": return "Swipe Left"
-        case "swipeRight": return "Swipe Right"
-        default: return self
         }
     }
 }

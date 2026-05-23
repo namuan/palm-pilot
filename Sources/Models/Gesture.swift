@@ -1,6 +1,6 @@
 import Foundation
 
-enum Gesture: String, CaseIterable {
+enum Gesture: String, CaseIterable, Codable {
     case openPalm
     case fist
     case thumbsUp
@@ -18,18 +18,6 @@ enum Gesture: String, CaseIterable {
         case .swipeLeft: return "Swipe Left"
         case .swipeRight: return "Swipe Right"
         case .unknown: return "No Gesture"
-        }
-    }
-
-    var symbolName: String {
-        switch self {
-        case .openPalm: return "hand.raised"
-        case .fist: return "hand.raised.slash"
-        case .thumbsUp: return "hand.thumbsup"
-        case .peaceSign: return "hand.wave"
-        case .swipeLeft: return "arrow.left"
-        case .swipeRight: return "arrow.right"
-        case .unknown: return "questionmark"
         }
     }
 }
