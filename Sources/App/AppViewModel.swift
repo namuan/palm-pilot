@@ -1,6 +1,7 @@
 import SwiftUI
 import AVFoundation
 import Combine
+import AppKit
 
 final class AppViewModel: ObservableObject {
 
@@ -21,13 +22,19 @@ final class AppViewModel: ObservableObject {
     private let mappingStoreKey = "com.palmpilot.actionMappings"
     private var previousGesture: Gesture = .unknown
     private var handPresent = false
+    private var previewWindow: NSWindow?
+    private var onboardingWindow: NSWindow?
 
     init() {
         Log.info("AppViewModel initializing")
         loadMappings()
         setupPipeline()
         observeCameraState()
+        observePreviewLifecycle()
         Log.info("AppViewModel initialized. Mappings loaded: \(actionMappings.count)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.checkAndShowOnboardingIfNeeded()
+        }
     }
 
     deinit {
@@ -154,6 +161,144 @@ final class AppViewModel: ObservableObject {
         Log.info("Tracking session stopped")
     }
 
+    // MARK: - Preview Window
+
+    private func observePreviewLifecycle() {
+        $isTracking
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] tracking in
+                if tracking {
+                    self?.showPreview()
+                } else {
+                    self?.hidePreview()
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    private func showPreview() {
+        if let existing = previewWindow {
+            existing.makeKeyAndOrderFront(nil)
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            return
+        }
+        Log.info("Opening camera preview window")
+
+        let hostingView = NSHostingView(
+            rootView: _PreviewHost(viewModel: self)
+        )
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 360),
+            styleMask: [.titled, .closable, .resizable, .fullSizeContentView],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Camera Preview"
+        window.titlebarAppearsTransparent = true
+        window.contentView = hostingView
+        window.isReleasedWhenClosed = false
+        window.center()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(previewWindowWillClose),
+            name: NSWindow.willCloseNotification,
+            object: window
+        )
+
+        window.makeKeyAndOrderFront(nil)
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        previewWindow = window
+    }
+
+    @objc private func previewWindowWillClose(_ notification: Notification) {
+        Log.info("Preview window closed by user")
+        guard let window = notification.object as? NSWindow else { return }
+        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: window)
+        previewWindow?.contentView = nil
+        previewWindow = nil
+        if isTracking {
+            stopTracking()
+        }
+    }
+
+    private func hidePreview() {
+        guard let window = previewWindow else { return }
+        Log.info("Closing camera preview window")
+        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: window)
+        window.contentView = nil
+        window.close()
+        previewWindow = nil
+    }
+
+    // MARK: - Onboarding
+
+    private func checkAndShowOnboardingIfNeeded() {
+        let cameraAuthorized = AVCaptureDevice.authorizationStatus(for: .video) == .authorized
+        let accessibilityTrusted = AXIsProcessTrusted()
+
+        if !cameraAuthorized || !accessibilityTrusted {
+            Log.info("Permissions missing — showing onboarding (camera: \(cameraAuthorized), accessibility: \(accessibilityTrusted))")
+            showOnboarding()
+        }
+    }
+
+    private func showOnboarding() {
+        if let existing = onboardingWindow {
+            existing.makeKeyAndOrderFront(nil)
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            return
+        }
+        Log.info("Opening onboarding window")
+
+        let hostingView = NSHostingView(
+            rootView: OnboardingView { [weak self] in
+                self?.dismissOnboarding()
+            }
+        )
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 420, height: 480),
+            styleMask: [.titled, .closable, .fullSizeContentView],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Welcome"
+        window.titlebarAppearsTransparent = true
+        window.contentView = hostingView
+        window.isReleasedWhenClosed = false
+        window.center()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onboardingWindowWillClose),
+            name: NSWindow.willCloseNotification,
+            object: window
+        )
+
+        window.makeKeyAndOrderFront(nil)
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        onboardingWindow = window
+    }
+
+    @objc private func onboardingWindowWillClose(_ notification: Notification) {
+        Log.info("Onboarding window closed by user")
+        guard let window = notification.object as? NSWindow else { return }
+        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: window)
+        onboardingWindow?.contentView = nil
+        onboardingWindow = nil
+    }
+
+    private func dismissOnboarding() {
+        guard let window = onboardingWindow else { return }
+        Log.info("Dismissing onboarding window")
+        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: window)
+        window.contentView = nil
+        window.close()
+        onboardingWindow = nil
+    }
+
     // MARK: - Persistence
 
     private func loadMappings() {
@@ -175,5 +320,18 @@ final class AppViewModel: ObservableObject {
         }
         UserDefaults.standard.set(data, forKey: mappingStoreKey)
         Log.info("Saved \(actionMappings.count) action mappings to UserDefaults")
+    }
+}
+
+fileprivate struct _PreviewHost: View {
+    @ObservedObject var viewModel: AppViewModel
+
+    var body: some View {
+        CameraPreviewView(
+            session: viewModel.cameraSession,
+            landmarks: viewModel.landmarks,
+            showOverlay: true
+        )
+        .ignoresSafeArea()
     }
 }

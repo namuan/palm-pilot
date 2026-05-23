@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 
 @main
 struct PalmPilotApp: App {
@@ -17,7 +18,10 @@ struct PalmPilotApp: App {
 
         WindowGroup("Settings", id: "settings") {
             SettingsView(viewModel: viewModel)
-                .onAppear { viewModel.saveMappings() }
+                .onAppear {
+                    NSApplication.shared.activate(ignoringOtherApps: true)
+                    viewModel.saveMappings()
+                }
                 .onDisappear { viewModel.saveMappings() }
         }
         .windowResizability(.contentSize)
